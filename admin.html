@@ -1,58 +1,6 @@
 <!DOCTYPE html>
-<html lang="tr">
-<head>
-<meta charset="UTF-8">
-<title>Boztify Admin</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-body{
-    background:black;
-    color:#00ff9c;
-    font-family:monospace;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-}
-.box{
-    border:2px solid #00ff9c;
-    padding:30px;
-    width:300px;
-    text-align:center;
-}
-input,button{
-    width:100%;
-    padding:10px;
-    margin-top:10px;
-    background:black;
-    border:1px solid #00ff9c;
-    color:#00ff9c;
-}
-button:hover{
-    background:#00ff9c;
-    color:black;
-}
-</style>
-</head>
+<html>
 <body>
-
-<div class="box">
-    <h2>ADMIN GİRİŞ</h2>
-    <input type="password" id="pass" placeholder="Şifre">
-    <button onclick="login()">Giriş</button>
-    <p id="msg"></p>
-</div>
-
-<script>
-function login(){
-    const sifre = "bozti123"; // ŞİFRE (istersen değiştir)
-    if(document.getElementById("pass").value === sifre){
-        window.location.href = "panel.html";
-    }else{
-        document.getElementById("msg").innerText = "Hatalı şifre!";
-    }
-}
-</script>
-
+<h1>ADMIN OK</h1>
 </body>
 </html>
