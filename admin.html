@@ -45,11 +45,11 @@ button:hover{
 
 <script>
 function login(){
-    const sifre = "bozti123"; // BURAYI DEĞİŞTİR
+    const sifre = "bozti123"; // ŞİFRE (istersen değiştir)
     if(document.getElementById("pass").value === sifre){
-        window.location.href="panel.html";
+        window.location.href = "panel.html";
     }else{
-        document.getElementById("msg").innerText="Hatalı şifre!";
+        document.getElementById("msg").innerText = "Hatalı şifre!";
     }
 }
 </script>
