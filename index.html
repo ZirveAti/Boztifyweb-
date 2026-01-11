@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Boztify's | Social Media Expert</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Share Tech Mono', monospace;
+}
+
+body{
+    height:100vh;
+    background:black;
+    color:#00ff9c;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+/* Matrix arka plan */
+canvas{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:-1;
+}
+
+.card{
+    background:rgba(0,0,0,0.75);
+    border:2px solid #00ff9c;
+    box-shadow:0 0 25px #00ff9c;
+    padding:35px;
+    text-align:center;
+    width:90%;
+    max-width:380px;
+    border-radius:12px;
+}
+
+h1{
+    font-size:26px;
+    margin-bottom:10px;
+}
+
+p{
+    font-size:14px;
+    opacity:0.85;
+    margin-bottom:25px;
+}
+
+a{
+    display:block;
+    text-decoration:none;
+    color:black;
+    background:#00ff9c;
+    padding:14px;
+    border-radius:8px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+a:hover{
+    background:black;
+    color:#00ff9c;
+    box-shadow:0 0 15px #00ff9c;
+}
+
+.footer{
+    margin-top:20px;
+    font-size:12px;
+    opacity:0.6;
+}
+</style>
+</head>
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div class="card">
+    <h1>BOZTIFY'S</h1>
+    <p>Social Media Expert<br>
+    İşlemler için ulaşın</p>
+
+    <!-- Instagram linkini buraya yaz -->
+    <a href="https://www.instagram.com/INSTAGRAM_KULLANICI_ADI" target="_blank">
+        Instagram'dan Ulaş
+    </a>
+
+    <div class="footer">
+        © 2026 Boztify
+    </div>
+</div>
+
+<script>
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const letters = "01";
+const fontSize = 14;
+const columns = canvas.width / fontSize;
+const drops = [];
+
+for(let x = 0; x < columns; x++)
+    drops[x] = 1;
+
+function draw(){
+    ctx.fillStyle = "rgba(0,0,0,0.05)";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    ctx.fillStyle = "#00ff9c";
+    ctx.font = fontSize + "px monospace";
+
+    for(let i = 0; i < drops.length; i++){
+        const text = letters[Math.floor(Math.random()*letters.length)];
+        ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+
+        if(drops[i]*fontSize > canvas.height && Math.random() > 0.975)
+            drops[i] = 0;
+
+        drops[i]++;
+    }
+}
+
+setInterval(draw, 35);
+</script>
+
+</body>
+</html>
