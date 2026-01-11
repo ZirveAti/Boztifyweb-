@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Admin Panel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+    background:black;
+    color:#00ff9c;
+    font-family:monospace;
+    padding:20px;
+}
+input,button{
+    width:100%;
+    padding:10px;
+    margin-top:10px;
+    background:black;
+    border:1px solid #00ff9c;
+    color:#00ff9c;
+}
+button:hover{
+    background:#00ff9c;
+    color:black;
+}
+</style>
+</head>
+<body>
+
+<h2>Boztify Admin Panel</h2>
+
+<label>Instagram Linki</label>
+<input id="insta" value="https://www.instagram.com/y1kam4nki.bozti">
+
+<button onclick="save()">Kaydet</button>
+
+<p id="ok"></p>
+
+<script>
+function save(){
+    localStorage.setItem("insta", document.getElementById("insta").value);
+    document.getElementById("ok").innerText="Kaydedildi ✔";
+}
+</script>
+
+</body>
+</html>
