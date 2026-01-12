@@ -16,122 +16,136 @@
 }
 
 body{
-    height:100vh;
     background:black;
     color:#00ff9c;
-    display:flex;
-    align-items:center;
-    justify-content:center;
     overflow:hidden;
 }
 
-/* Matrix arka plan */
-canvas{
+/* GİRİŞ EKRANI */
+#intro{
     position:fixed;
-    top:0;
-    left:0;
-    z-index:-1;
+    inset:0;
+    background:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    animation:fadeIn 1s;
 }
 
-.card{
-    background:rgba(0,0,0,0.75);
-    border:2px solid #00ff9c;
-    box-shadow:0 0 25px #00ff9c;
-    padding:35px;
+@keyframes fadeIn{
+    from{opacity:0}
+    to{opacity:1}
+}
+
+.intro-box{
     text-align:center;
-    width:90%;
-    max-width:380px;
-    border-radius:12px;
+    animation:zoom 1s ease;
 }
 
-h1{
-    font-size:26px;
-    margin-bottom:10px;
+@keyframes zoom{
+    from{transform:scale(0.7);opacity:0}
+    to{transform:scale(1);opacity:1}
 }
 
-p{
-    font-size:14px;
-    opacity:0.85;
-    margin-bottom:25px;
+.glitch{
+    font-size:36px;
+    position:relative;
+    animation:glitch 1.5s infinite;
 }
 
-a{
+@keyframes glitch{
+    0%{text-shadow:2px 0 red,-2px 0 cyan}
+    50%{text-shadow:-2px 0 red,2px 0 cyan}
+    100%{text-shadow:2px 0 red,-2px 0 cyan}
+}
+
+.intro-box p{
+    margin:10px 0 20px;
+    opacity:0.8;
+}
+
+.intro-box button{
+    width:220px;
+    padding:12px;
+    margin:8px auto;
     display:block;
-    text-decoration:none;
-    color:black;
-    background:#00ff9c;
-    padding:14px;
-    border-radius:8px;
-    font-weight:bold;
+    background:black;
+    color:#00ff9c;
+    border:2px solid #00ff9c;
+    cursor:pointer;
     transition:0.3s;
 }
 
-a:hover{
-    background:black;
-    color:#00ff9c;
-    box-shadow:0 0 15px #00ff9c;
+.intro-box button:hover{
+    background:#00ff9c;
+    color:black;
 }
 
-.footer{
+/* ANA SİTE */
+.main{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.card{
+    border:2px solid #00ff9c;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 0 20px #00ff9c;
+}
+
+.card h2{
+    margin-bottom:10px;
+}
+
+.card a{
+    display:block;
     margin-top:20px;
-    font-size:12px;
-    opacity:0.6;
+    padding:12px;
+    background:#00ff9c;
+    color:black;
+    text-decoration:none;
+    font-weight:bold;
 }
 </style>
 </head>
+
 <body>
 
-<canvas id="matrix"></canvas>
+<!-- GİRİŞ -->
+<div id="intro">
+  <div class="intro-box">
+    <h1 class="glitch">BOZTIFY'S</h1>
+    <p>Social Media Expert</p>
 
-<div class="card">
-    <h1>BOZTIFY'S</h1>
-    <p>Social Media Expert<br>
-    İşlemler için ulaşın</p>
+    <button onclick="enterSite()">Siteye Gir</button>
+    <button onclick="admin()">Admin Giriş</button>
+  </div>
+</div>
 
-    <!-- Instagram linkini buraya yaz -->
-    <a href="https://www.instagram.com/INSTAGRAM_KULLANICI_ADI" target="_blank">
-        Instagram'dan Ulaş
+<!-- ANA SAYFA -->
+<div class="main">
+  <div class="card">
+    <h2>Boztify's</h2>
+    <p>İşlemler için ulaşın</p>
+
+    <a href="https://www.instagram.com/y1kam4nki.bozti" target="_blank">
+      Instagram’dan Ulaş
     </a>
-
-    <div class="footer">
-        © 2026 Boztify
-    </div>
+  </div>
 </div>
 
 <script>
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-const letters = "01";
-const fontSize = 14;
-const columns = canvas.width / fontSize;
-const drops = [];
-
-for(let x = 0; x < columns; x++)
-    drops[x] = 1;
-
-function draw(){
-    ctx.fillStyle = "rgba(0,0,0,0.05)";
-    ctx.fillRect(0,0,canvas.width,canvas.height);
-
-    ctx.fillStyle = "#00ff9c";
-    ctx.font = fontSize + "px monospace";
-
-    for(let i = 0; i < drops.length; i++){
-        const text = letters[Math.floor(Math.random()*letters.length)];
-        ctx.fillText(text, i*fontSize, drops[i]*fontSize);
-
-        if(drops[i]*fontSize > canvas.height && Math.random() > 0.975)
-            drops[i] = 0;
-
-        drops[i]++;
-    }
+function enterSite(){
+    document.getElementById("intro").style.display="none";
 }
 
-setInterval(draw, 35);
+function admin(){
+    window.location.href="admin.html";
+}
 </script>
 
 </body>
